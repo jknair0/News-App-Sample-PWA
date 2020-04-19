@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v3.1';
+const CACHE_VERSION = 'v3.2';
 const CACHE_STATIC_NAME = 'news-app-static-' + CACHE_VERSION;
 const CACHE_DYNAMIC_NAME = 'news-app-dynamic-' + CACHE_VERSION;
 const CACHE_REQUEST_LIMIT = 20;
@@ -7,6 +7,7 @@ const NEWS_TOP_HEADLINES_URL = "https://newsapi.org/v2/top-headlines";
 
 const STATIC_URLS = [
     '/',
+    './env.js',
     './404.html',
     '/index.html',
     '/scripts/app.js',

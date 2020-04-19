@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 //endregion
 
 //region news app functionality
-const NEWS_API_KEY = "PASTE_YOUR_KEY_HERE";
+const NEWS_API_KEY = env.apiKey;
 let newsSources = [];
 let currentNewsSourceId = 'techcrunch';
 const newsSourcesSelectElement = document.getElementById("news-sources");
@@ -42,7 +42,7 @@ function initViews() {
     newsSourcesSelectElement.addEventListener('change', function () {
         const newValue = newsSourcesSelectElement.value;
         // if (currentNewsSourceId === newValue) return;
-        // currentNewsSourceId = newValue;
+        currentNewsSourceId = newValue;
         updateNews();
     });
 }
