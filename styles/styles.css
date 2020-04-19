@@ -1,0 +1,44 @@
+.root {
+    display: flex;
+    flex-direction: row;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.content-container {
+    margin-top: 99px;
+}
+
+.articles {
+    display: grid;
+    flex: 1;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+    grid-template-rows: repeat(auto-fill, minmax(400px, auto));
+    grid-gap: 10px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.articleName {
+    padding: 1em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-height: 7em;
+}
+
+
+.content.card-panel {
+    height: 400px;
+}
+
+.articleImage {
+    height: 200px;
+    width: 100%;
+    object-fit: cover
+}
+
+.articleContent {
+    margin: 10px;
+}

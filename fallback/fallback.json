@@ -1,0 +1,19 @@
+{
+  "status": "ok",
+  "totalResults": 10,
+  "articles": [
+    {
+      "source": {
+        "id": "local",
+        "name": "local"
+      },
+      "author": "Problem",
+      "title": "Looks like you are offline!",
+      "description": "",
+      "url": "./images/error/cartoon.jpg",
+      "urlToImage": "./images/error/cartoon.jpg",
+      "publishedAt": "2020-04-18T13:41:58Z",
+      "content": ""
+    }
+  ]
+}

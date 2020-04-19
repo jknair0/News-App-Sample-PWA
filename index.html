@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <!--apple-touch-start-->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link rel="apple-touch-icon" href="./images/icons/icon-512x512.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <!--apple-touch-end-->
+    <meta name="theme-color" content="#673AB7">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+          rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="./styles/styles.css" rel="stylesheet"/>
+    <link rel="manifest" href="./manifest.json"/>
+    <title>News App</title>
+</head>
+<body id="body">
+<div class="root">
+    <!--header with side bar start-->
+    <ul class="sidenav" id="sidebar-news-sources">
+        <li><a class="waves-effect" href="./about.html">About</a></li>
+    </ul>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper deep-purple">
+                <a class="sidenav-trigger show-on-medium-and-up" data-target="sidebar-news-sources" href="#">
+                    <i class="material-icons">menu</i>
+                </a>
+                <a class="brand-logo center" href="#">
+                    <img src="./images/icons/icon-72x72.png" width="24" height="24"/>News
+                </a>
+            </div>
+            <div class="nav-content">
+                <div class="s12">
+                    <select class="browser-default" id="news-sources"></select>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--header with side bar end-->
+    <div class="container content-container">
+        <div class="articles" id="articles">
+
+        </div>
+    </div>
+    <script src="./scripts/app.js"></script>
+</body>
+</html>
