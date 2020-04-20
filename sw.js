@@ -33,7 +33,9 @@ self.addEventListener('install', function (event) {
         caches.open(CACHE_STATIC_NAME)
             .then(function (cache) {
                 return cache.addAll(STATIC_URLS);
-            })
+            }).then(() => {
+            return self.skipWaiting();
+        })
     )
 })
 
@@ -54,6 +56,10 @@ self.addEventListener('activate', function (event) {
     );
 })
 
+async function response404() {
+    return caches.match('./404.html ');
+}
+
 async function cacheFirst(request) {
     try {
         const cacheResponse = await caches.match(request);
@@ -67,9 +73,10 @@ async function cacheFirst(request) {
         await cache.put(request, networkResponse.clone());
         return networkResponse;
     } catch (e) {
-        return caches.match('./404.html ');
+        return response404();
     }
 }
+
 
 async function removeOlderRequestIfLimit(cache) {
     const requests = await cache.keys();
@@ -101,7 +108,7 @@ async function networkFirst(request) {
     if (cacheResponse) {
         return cacheResponse;
     }
-    if(request.url.includes(NEWS_TOP_HEADLINES_URL)){
+    if (request.url.includes(NEWS_TOP_HEADLINES_URL)) {
         console.log("matched fallback", request.url);
         const staticCache = await caches.open(CACHE_STATIC_NAME);
         return staticCache.match("./fallback/fallback.json");
@@ -109,10 +116,34 @@ async function networkFirst(request) {
     return fetch(request);
 }
 
+/**
+ * @param {URL} url
+ */
+function isStarred(url) {
+    return url.pathname.includes('starred');
+}
+
+/**
+ * @param {URL} url
+ */
+async function starredResponse(requestUrl) {
+    try {
+        const params = new URLSearchParams(requestUrl.search);
+        const starredData = params.get("data");
+        console.warn("received data starred Data");
+        throw new Error("Not implemented");
+    } catch (e) {
+        return await fetch(requestUrl) || response404();
+    }
+}
+
 self.addEventListener('fetch', function (event) {
     const request = event.request;
     const requestUrl = new URL(request.url);
     if (requestUrl.origin === location.origin) {
+        // if (isStarred(requestUrl)) {
+        //     event.respondWith(starredResponse(requestUrl));
+        // }
         console.warn("cacheFirst", request.url);
         event.respondWith(cacheFirst(request));
     } else {
